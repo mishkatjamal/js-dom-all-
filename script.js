@@ -1,34 +1,28 @@
-let btn  = document.querySelector("#text button");
-let progressbar = document.querySelector("#inner-p")
-let h3 = document.querySelector("#text h3");
+let img = document.querySelector("#image img");
+let like = document.querySelector("#image i");
+let likeG = document.querySelector("#bottom p");
+let likesm = document.querySelector("#like-sm");
+let likeChange = document.querySelector("#like-change");
 
-let grow = 0;
+img.addEventListener("dblclick",()=>{
+    // small like number
+    likeG.innerHTML = "1"
 
-btn.addEventListener("click",()=>{
-    
-    btn.style.opacity = "0.5"
-    btn.style.pointerEvents = "none"
-    let randomTime =  Math.floor(Math.random()*7000)+ 3000
+    likesm.style.display = "none"
+    likeChange.style.display = "block"
+    // big like icon
+    like.style.opacity = 1;
+    like.style.transform = "translate(-50%,-50%) scale(1) rotate(0deg)"
 
-    let stop = setInterval(() => {
-        grow++;
-
-         if(grow > 100){
-            grow = 100;
-            clearInterval(stop);
-        }
-
-
-        h3.innerHTML = grow+"%";
-        progressbar.style.width = grow+"%"
-
-
-    }, randomTime /100);
-
-    setTimeout(() => {
-        clearInterval(stop)
-        btn.innerHTML  = "Downloaded";
-        
-    }, randomTime);
+    setTimeout(()=>{
+        like.style.opacity = 0;
+    like.style.transform = "translate(-50%,-300%) scale(0) rotate(60deg)"
+},900)
+setTimeout(()=>{
+    like.style.opacity = 0;
+},1000)
+setTimeout(()=>{
+    like.style.transform = "translate(-50%,30%) scale(0) rotate(-60deg)"
+    },1100)
     
 })
