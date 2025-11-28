@@ -1,18 +1,21 @@
-const cha = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+const charecter = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
 const para = document.querySelector("p")
 const text = para.innerText;
 
-para.addEventListener("mouseenter",()=>{
-
-    let stop = setInterval(()=>{
-    const str =text.split("").map((char,ind)=>{
-        return cha.split("")[Math.floor(Math.random()*53)]
+let ite = 0;
+function textWala(){
+    const str=text.split("").map((cha,ind)=>{
+        if(ind<ite){
+            return cha
+        }
+        return charecter.split("")[Math.floor(Math.random()*charecter.length)]
     }).join("")
-    para.innerText = str
-},30)
+    para.innerText = str;
+    ite += 0.8;
+}
 
-setTimeout(()=>{
-clearInterval(stop);
-para.innerText = text;
-},2000)
+
+
+para.addEventListener("mouseenter",()=>{
+setInterval(textWala,80)
 })
